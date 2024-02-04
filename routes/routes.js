@@ -1,0 +1,12 @@
+const express = require('express')
+const routes = express.Router()
+const link2=require('../controllers/CreateTable')
+routes.route('/createAndView').post(link2.uploadCSVFileAutoCreateTableAndInsert)
+routes.route('/show').get(link2.showTables)
+routes.route('/show1/:id').get(link2.showSingleTable)
+routes.route('/showsingle/:tableid/:id').get(link2.showSingleRecord)
+routes.route('/editrecord/:tableid/:rowId').post(link2.editRecord)
+routes.route('/drop/:id').get(link2.dropTable)
+routes.route('/').get(link2.reactPage)
+routes.route('/*').get(link2.reactPage)
+module.exports=routes
